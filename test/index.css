@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  font-family: 'proxima-nova', Helvetica;
+}
+
+div.grid-container {
+  display: grid;
+  grid-template-columns: 200px auto;
+}
