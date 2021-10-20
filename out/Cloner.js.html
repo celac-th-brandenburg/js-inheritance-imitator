@@ -1,14 +1,42 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Cloner.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Cloner.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @name Cloner
  * @module Cloner
- * @author Veronica Celac <celac@web.de>
+ * @author Veronica Celac &lt;celac@web.de>
  * @copyright Veronica Celac, 2021
  * @version 1.0.0
  * @license AGPL-3.0-only
  * @file The file Cloner.js contains the class Cloner. The class Cloner
- (constructor function object) performs extension & multiple inheritance
+ (constructor function object) performs extension &amp; multiple inheritance
  operations.
- * @classdesc Performs extension & multiple inheritance operations between an
+ * @classdesc Performs extension &amp; multiple inheritance operations between an
   inheriting instance, object or prototype (host object) and one or more
   inherited instances, objects, prototypes or constructor functions (extension
   object). This class should not be instantiated and is supposed to be used as
@@ -25,14 +53,14 @@ import DataDescriptorReplicator from './DataDescriptorReplicator';
 /**
  * @name Cloner
  * @class Cloner
- * @classdesc Performs extension & multiple inheritance operations between an
+ * @classdesc Performs extension &amp; multiple inheritance operations between an
   inheriting instance, object or prototype (host object) and one or more
   inherited instances, objects, prototypes or constructor functions (extension
   object). This class should not be instantiated and is supposed to be used as
   a constructor function to access static methods.
- * @description Cloner performs extension & multiple inheritance operations
+ * @description Cloner performs extension &amp; multiple inheritance operations
  * @exports Cloner the Cloner class (constructor function object)
- * @author Veronica Celac <celac@web.de>
+ * @author Veronica Celac &lt;celac@web.de>
  * @copyright Veronica Celac, 2021
  * @version 1.0.0
  * @since 1.0.0
@@ -177,7 +205,7 @@ export default class Cloner {
       SuperExtensionManager.registerInstance( hostObject, extensionObject );
       SuperExtensionManager.addSuperMethod( hostObject );
     }
-    const accessorDescriptorPropertiesMirrored = hasConfig &&
+    const accessorDescriptorPropertiesMirrored = hasConfig &amp;&amp;
       !config.mirrorGettersAndSetters ? true : AccessorDescriptorReplicator
       .mirrorGettersAndSettersFromPrototypeOnWholePrototypeChain( {
         hostObject: hostObject,
@@ -193,7 +221,7 @@ export default class Cloner {
         overrideFunctions: !hasConfig ? false : !!config.overrideFunctions,
         overrideOthers: !hasConfig ? false : !!config.overrideOthers
       } );
-    return accessorDescriptorPropertiesMirrored &&
+    return accessorDescriptorPropertiesMirrored &amp;&amp;
       dataDescriptorPropertiesMirrored;
   }
 
@@ -243,7 +271,7 @@ export default class Cloner {
       SuperExtensionManager.registerInstance( hostObject, extensionObject );
       SuperExtensionManager.addSuperMethod( hostObject );
     }
-    const accessorDescriptorPropertiesMirrored = hasConfig &&
+    const accessorDescriptorPropertiesMirrored = hasConfig &amp;&amp;
       !config.mirrorGettersAndSetters ? true : AccessorDescriptorReplicator
       .mirrorGettersAndSettersFromInstanceOnWholePrototypeChain( {
         hostObject: hostObject,
@@ -259,7 +287,7 @@ export default class Cloner {
         overrideFunctions: !hasConfig ? false : !!config.overrideFunctions,
         overrideOthers: !hasConfig ? false : !!config.overrideOthers
       } );
-    return accessorDescriptorPropertiesMirrored &&
+    return accessorDescriptorPropertiesMirrored &amp;&amp;
       dataDescriptorPropertiesMirrored;
   }
 
@@ -331,7 +359,7 @@ export default class Cloner {
    * @since 1.0.0
    * @deprecated since version 1.0.0
    * @description Calling the constructor function of Cloner throws an error.
-   * @classdesc Performs extension & multiple inheritance operations between an
+   * @classdesc Performs extension &amp; multiple inheritance operations between an
     inheriting instance, object or prototype (host object) and one or more
     inherited instances, objects, prototypes or constructor functions (extension
     object). This class should not be instantiated and is supposed to be used as
@@ -345,4 +373,26 @@ export default class Cloner {
       ' instantiated.' );
   }
 
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AccessorDescriptorReplicator.html">AccessorDescriptorReplicator</a></li><li><a href="module-Cloner.html">Cloner</a></li><li><a href="module-DataDescriptorReplicator.html">DataDescriptorReplicator</a></li><li><a href="module-Extension.html">Extension</a></li><li><a href="module-Identifier.html">Identifier</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-SuperExtensionManager.html">SuperExtensionManager</a></li></ul><h3>Classes</h3><ul><li><a href="module-AccessorDescriptorReplicator-AccessorDescriptorReplicator.html">AccessorDescriptorReplicator</a></li><li><a href="module-Cloner-Cloner.html">Cloner</a></li><li><a href="module-DataDescriptorReplicator-DataDescriptorReplicator.html">DataDescriptorReplicator</a></li><li><a href="module-Extension-Extension.html">Extension</a></li><li><a href="module-Identifier-Identifier.html">Identifier</a></li><li><a href="module-Logger-Logger.html">Logger</a></li><li><a href="module-SuperExtensionManager-SuperExtensionManager.html">SuperExtensionManager</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 20 2021 23:58:19 GMT+0200 (Центральная Европа, летнее время)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

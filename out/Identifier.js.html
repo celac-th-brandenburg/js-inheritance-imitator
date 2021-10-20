@@ -1,7 +1,35 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Identifier.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Identifier.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @name Identifier
  * @module Identifier
- * @author Veronica Celac <celac@web.de>
+ * @author Veronica Celac &lt;celac@web.de>
  * @copyright Veronica Celac, 2021
  * @version 1.0.0
  * @license AGPL-3.0-only
@@ -23,7 +51,7 @@
  * @description Identifier identifies the type of objects as well as the
  inheritance relationship between two objects
  * @exports Identifier the Identifier class (constructor function object)
- * @author Veronica Celac <celac@web.de>
+ * @author Veronica Celac &lt;celac@web.de>
  * @copyright Veronica Celac, 2021
  * @version 1.0.0
  * @since 1.0.0
@@ -51,14 +79,14 @@ export default class Identifier {
     if ( !Identifier.isObject( hostObject ) ) return false;
     const isConstructorFunction = Identifier
       .isConstructorFunction( constructorObject );
-    if ( isConstructorFunction &&
+    if ( isConstructorFunction &amp;&amp;
       hostObject.constructor === constructorObject ) return true;
-    if ( testNative && isConstructorFunction &&
+    if ( testNative &amp;&amp; isConstructorFunction &amp;&amp;
       hostObject instanceof constructorObject )
       return true;
     if ( !Identifier.isSet( hostObject.__extends ) ) return false;
     if ( hostObject.__extends.has( constructorObject ) ) return true;
-    return isConstructorFunction && [ ...hostObject.__extends.values() ]
+    return isConstructorFunction &amp;&amp; [ ...hostObject.__extends.values() ]
       .some( extension => {
         if ( extension.constructor == constructorObject ) return true;
         const constructorFunction =
@@ -71,7 +99,7 @@ export default class Identifier {
           testInstance = new constructorFunction();
         } catch ( err ) {}
         if ( !testInstance ) return false;
-        if ( testNative && testInstance instanceof constructorObject )
+        if ( testNative &amp;&amp; testInstance instanceof constructorObject )
           return true;
         if ( !Identifier.isFunction( testInstance.instanceof ) ) return false;
         return !!testInstance.instanceof( constructorObject );
@@ -87,7 +115,7 @@ export default class Identifier {
    * @return {Boolean} whether or not the parameter/argument is a prototype
    */
   static isPrototype( inputParameter ) {
-    return Identifier.isObject( inputParameter ) &&
+    return Identifier.isObject( inputParameter ) &amp;&amp;
       Reflect.has( inputParameter, "constructor" );
   }
 
@@ -102,8 +130,8 @@ export default class Identifier {
    * function object
    */
   static isConstructorFunction( inputParameter ) {
-    return typeof inputParameter == "function" &&
-      Reflect.has( inputParameter, "prototype" ) &&
+    return typeof inputParameter == "function" &amp;&amp;
+      Reflect.has( inputParameter, "prototype" ) &amp;&amp;
       Reflect.has( inputParameter, "constructor" );
   }
 
@@ -116,7 +144,7 @@ export default class Identifier {
    * @return {Boolean} whether or not the parameter/argument is an object
    */
   static isObject( inputParameter ) {
-    return !!inputParameter && typeof inputParameter == "object";
+    return !!inputParameter &amp;&amp; typeof inputParameter == "object";
   }
 
   /**
@@ -128,8 +156,8 @@ export default class Identifier {
    * @return {Boolean} whether or not the parameter/argument is a string
    */
   static isString( inputParameter ) {
-    return !!inputParameter &&
-      typeof inputParameter == "string" && inputParameter.length > 0;
+    return !!inputParameter &amp;&amp;
+      typeof inputParameter == "string" &amp;&amp; inputParameter.length > 0;
   }
 
   /**
@@ -153,7 +181,7 @@ export default class Identifier {
    * @return {Boolean} whether or not the parameter/argument is an integer number
    */
   static isInteger( inputParameter ) {
-    return Identifier.isNumber( inputParameter ) &&
+    return Identifier.isNumber( inputParameter ) &amp;&amp;
       Number.isInteger( inputParameter );
   }
 
@@ -170,7 +198,7 @@ export default class Identifier {
    * than or equal to zero
    */
   static isPositiveNumber( inputParameter, canBeZero = true ) {
-    return Identifier.isNumber( inputParameter ) &&
+    return Identifier.isNumber( inputParameter ) &amp;&amp;
       ( !canBeZero ? inputParameter > 0 : inputParameter >= 0 );
   }
 
@@ -187,7 +215,7 @@ export default class Identifier {
    * number greater than or equal to zero
    */
   static isPositiveInteger( inputParameter, canBeZero = true ) {
-    return Identifier.isInteger( inputParameter ) &&
+    return Identifier.isInteger( inputParameter ) &amp;&amp;
       Identifier.isPositiveNumber( inputParameter, canBeZero );
   }
 
@@ -212,7 +240,7 @@ export default class Identifier {
    * @return {Boolean} whether or not the parameter/argument is a function
    */
   static isFunction( inputParameter ) {
-    return !!inputParameter && typeof inputParameter == "function";
+    return !!inputParameter &amp;&amp; typeof inputParameter == "function";
   }
 
   /**
@@ -253,7 +281,7 @@ export default class Identifier {
    * @return {Boolean} whether or not the parameter/argument is iterable
    */
   static isIterable( inputParameter ) {
-    if ( !Identifier.isObject( inputParameter ) &&
+    if ( !Identifier.isObject( inputParameter ) &amp;&amp;
       !Identifier.isString( inputParameter ) ) return false;
     return Identifier.isFunction( inputParameter[ Symbol.iterator ] );
   }
@@ -289,20 +317,20 @@ export default class Identifier {
     if ( !Identifier.isString( pathString ) )
       return Identifier.isFunction( pathString ) ||
         Identifier.isFunction( parentObject );
-    if ( pathString.indexOf( "." ) < 0 )
-      return Identifier.isObject( parentObject ) &&
+    if ( pathString.indexOf( "." ) &lt; 0 )
+      return Identifier.isObject( parentObject ) &amp;&amp;
         Identifier.isFunction( parentObject[ pathString ] );
     let pathArray = pathString.split( "." );
-    if ( pathArray.length < 1 ) return Identifier.isFunction( parentObject );
+    if ( pathArray.length &lt; 1 ) return Identifier.isFunction( parentObject );
     if ( pathArray.length == 1 ) return Identifier.isFunction( parentObject ) ||
-      Identifier.isObject( parentObject ) &&
+      Identifier.isObject( parentObject ) &amp;&amp;
       Identifier.isFunction( parentObject[ pathString ] );
     pathArray.shift();
     const functionName = pathArray[ pathArray.length - 1 ];
     pathArray.splice( -1 );
     if ( !Identifier._isObjectHierarchy( parentObject, pathArray ) ) return false;
     const finalObject = Identifier._getObjectFromHierarchy( parentObject, pathArray );
-    return Identifier.isObject( finalObject ) &&
+    return Identifier.isObject( finalObject ) &amp;&amp;
       Identifier.isFunction( finalObject[ functionName ] );
   }
 
@@ -344,7 +372,7 @@ export default class Identifier {
     let finalObject = parentObject;
     for ( let childLevelName of pathArray ) {
       finalObject = finalObject[ childLevelName ];
-      if ( !!validateEachLevel && !Identifier.isObject( finalObject ) )
+      if ( !!validateEachLevel &amp;&amp; !Identifier.isObject( finalObject ) )
         return void 0;
     }
     return finalObject;
@@ -432,4 +460,26 @@ export default class Identifier {
       ' be instantiated.' );
   }
 
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AccessorDescriptorReplicator.html">AccessorDescriptorReplicator</a></li><li><a href="module-Cloner.html">Cloner</a></li><li><a href="module-DataDescriptorReplicator.html">DataDescriptorReplicator</a></li><li><a href="module-Extension.html">Extension</a></li><li><a href="module-Identifier.html">Identifier</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-SuperExtensionManager.html">SuperExtensionManager</a></li></ul><h3>Classes</h3><ul><li><a href="module-AccessorDescriptorReplicator-AccessorDescriptorReplicator.html">AccessorDescriptorReplicator</a></li><li><a href="module-Cloner-Cloner.html">Cloner</a></li><li><a href="module-DataDescriptorReplicator-DataDescriptorReplicator.html">DataDescriptorReplicator</a></li><li><a href="module-Extension-Extension.html">Extension</a></li><li><a href="module-Identifier-Identifier.html">Identifier</a></li><li><a href="module-Logger-Logger.html">Logger</a></li><li><a href="module-SuperExtensionManager-SuperExtensionManager.html">SuperExtensionManager</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 20 2021 23:58:19 GMT+0200 (Центральная Европа, летнее время)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

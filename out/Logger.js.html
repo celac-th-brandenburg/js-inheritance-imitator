@@ -1,7 +1,35 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Logger.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Logger.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @name Logger
  * @module Logger
- * @author Veronica Celac <celac@web.de>
+ * @author Veronica Celac &lt;celac@web.de>
  * @copyright Veronica Celac, 2021
  * @version 1.0.0
  * @license AGPL-3.0-only
@@ -23,7 +51,7 @@ import Identifier from './Identifier';
  static methods.
  * @description Logger logs messages with the browser Console API
  * @exports Logger the Logger class (constructor function object)
- * @author Veronica Celac <celac@web.de>
+ * @author Veronica Celac &lt;celac@web.de>
  * @copyright Veronica Celac, 2021
  * @version 1.0.0
  * @since 1.0.0
@@ -132,9 +160,9 @@ export default class Logger {
   static dateNumberToString( dateNumber, threeDigits = false ) {
     if ( !Identifier.isPositiveInteger( dateNumber ) ) return "";
     let stringDateNumber = dateNumber.toString();
-    while ( stringDateNumber.length < 2 )
+    while ( stringDateNumber.length &lt; 2 )
       stringDateNumber = "0" + stringDateNumber;
-    while ( threeDigits && stringDateNumber.length < 3 )
+    while ( threeDigits &amp;&amp; stringDateNumber.length &lt; 3 )
       stringDateNumber = "0" + stringDateNumber;
     return stringDateNumber;
   }
@@ -159,11 +187,11 @@ export default class Logger {
       stack = stack.substring( 3 );
     }
     const spaceIndex = stack.indexOf( " " );
-    if ( !Identifier.isInteger( spaceIndex ) || spaceIndex < 0 ||
-      stack.length - 1 < spaceIndex + 1 ) return stack;
+    if ( !Identifier.isInteger( spaceIndex ) || spaceIndex &lt; 0 ||
+      stack.length - 1 &lt; spaceIndex + 1 ) return stack;
     stack = stack.substring( 0, spaceIndex );
     const atIndex = stack.indexOf( "@" );
-    if ( Identifier.isInteger( atIndex ) && atIndex >= 0 &&
+    if ( Identifier.isInteger( atIndex ) &amp;&amp; atIndex >= 0 &amp;&amp;
       stack.length - 1 >= atIndex + 1 ) stack = stack.substring( 0, atIndex );
     if ( Identifier.isString( separator ) ) {
       stack = stack.replace( ".", separator );
@@ -187,15 +215,15 @@ export default class Logger {
     if ( !Identifier.isString( stack ) ) return void 0;
     if ( !Identifier.isInteger( topEntriesToRemove ) )
       topEntriesToRemove = 1;
-    if ( Identifier.firstMatchIndex( stack, /\sat\s/g ) < 0 ) topEntriesToRemove--;
+    if ( Identifier.firstMatchIndex( stack, /\sat\s/g ) &lt; 0 ) topEntriesToRemove--;
     while ( topEntriesToRemove > -1 ) {
       const firstNewLineIndex = stack.indexOf( "\n" );
-      if ( !Identifier.isInteger( firstNewLineIndex ) || firstNewLineIndex < 0 ||
-        stack.length - 1 < firstNewLineIndex + 1 ) break;
+      if ( !Identifier.isInteger( firstNewLineIndex ) || firstNewLineIndex &lt; 0 ||
+        stack.length - 1 &lt; firstNewLineIndex + 1 ) break;
       stack = stack.substring( firstNewLineIndex + 1 );
       topEntriesToRemove--;
     }
-    while ( stack.length > 0 && !!stack.charAt( 0 ).match( /\s/gi ) )
+    while ( stack.length > 0 &amp;&amp; !!stack.charAt( 0 ).match( /\s/gi ) )
       stack = stack.substring( 1 );
     return stack;
   }
@@ -218,4 +246,26 @@ export default class Logger {
       ' instantiated.' );
   }
 
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AccessorDescriptorReplicator.html">AccessorDescriptorReplicator</a></li><li><a href="module-Cloner.html">Cloner</a></li><li><a href="module-DataDescriptorReplicator.html">DataDescriptorReplicator</a></li><li><a href="module-Extension.html">Extension</a></li><li><a href="module-Identifier.html">Identifier</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-SuperExtensionManager.html">SuperExtensionManager</a></li></ul><h3>Classes</h3><ul><li><a href="module-AccessorDescriptorReplicator-AccessorDescriptorReplicator.html">AccessorDescriptorReplicator</a></li><li><a href="module-Cloner-Cloner.html">Cloner</a></li><li><a href="module-DataDescriptorReplicator-DataDescriptorReplicator.html">DataDescriptorReplicator</a></li><li><a href="module-Extension-Extension.html">Extension</a></li><li><a href="module-Identifier-Identifier.html">Identifier</a></li><li><a href="module-Logger-Logger.html">Logger</a></li><li><a href="module-SuperExtensionManager-SuperExtensionManager.html">SuperExtensionManager</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 20 2021 23:58:19 GMT+0200 (Центральная Европа, летнее время)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
